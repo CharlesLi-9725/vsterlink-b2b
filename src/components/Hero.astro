@@ -1,0 +1,176 @@
+---
+/**
+ * Hero.astro — Vsterlink GPS
+ * 50/50 split hero. Real brand copy, apps (QXGPS / DAGPS / Viidure), real contact.
+ * Copy object isolated for i18n.
+ */
+
+ const copy = {
+  eyebrow:    "Shenzhen Factory Direct · No Distributor Markup",
+  headline1:  "Enterprise GPS Hardware",
+  headline2:  "for High-Theft Cargo &",
+  headline3:  "Remote LATAM Fleets",
+  subheadline:
+    "Vsterlink supplies factory-direct 4G LTE vehicle trackers, magnetic asset monitors, and 4K video telematics — engineered for continuous coverage across Latin America's remote corridors, border crossings, and multi-carrier cellular zones.",
+  apps: {
+    label:  "Compatible Platforms:",
+    names:  ["QXGPS", "DAGPS", "Viidure (Dash Cam App)"],
+  },
+  cta: {
+    primary:   "Request Wholesale Pricing",
+    secondary: "Download Product Catalog",
+  },
+  stats: [
+    { value: "4G LTE",    label: "Cat-1 + 2G Fallback"          },
+    { value: "CE·FCC",    label: "RoHS · MSDS Certified"        },
+    { value: "OEM/ODM",   label: "Custom Branding Available"    },
+  ],
+  coords: [
+    "-23.5505° S, -46.6333° W  ·  SÃO PAULO FREIGHT HUB",
+    "-12.0464° S, -77.0428° W  ·  LIMA CARGO CORRIDOR",
+    "19.4326° N, -99.1332° W  ·  CDMX LOGISTICS RING",
+    "-34.6037° S, -58.3816° W  ·  BUENOS AIRES GATEWAY",
+  ],
+  imagePlaceholder: {
+    label: "Vsterlink Product Render",
+    hint:  "Recommended: PG07 / TK202 / LF10 hero shot — 1200×900 PNG, transparent bg",
+    sub:   "Replace with: <Image src={import('../assets/vsterlink-hero.png')} alt='...' />",
+  },
+};
+---
+
+<section class="relative bg-[#0A0F1E] overflow-hidden">
+
+  <!-- Grid background texture -->
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 opacity-[0.03]"
+    style="background-image: linear-gradient(#0066FF 1px, transparent 1px), linear-gradient(90deg, #0066FF 1px, transparent 1px); background-size: 48px 48px;"
+  ></div>
+
+  <!-- Ambient glows -->
+  <div aria-hidden="true" class="absolute -top-16 left-1/4 w-96 h-96 bg-[#0066FF]/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div aria-hidden="true" class="absolute bottom-0 right-1/3 w-72 h-72 bg-[#00D4AA]/8 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <!-- ── LEFT: Headline + CTAs ──────────────────── -->
+      <div class="flex flex-col gap-6">
+
+        <!-- Eyebrow badge -->
+        <div class="inline-flex items-center gap-2 w-fit bg-[#0066FF]/10 border border-[#0066FF]/30 rounded-full px-4 py-1.5">
+          <span class="w-2 h-2 rounded-full bg-[#00D4AA] animate-pulse flex-shrink-0"></span>
+          <span class="font-mono text-xs text-[#00D4AA] tracking-widest uppercase">{copy.eyebrow}</span>
+        </div>
+
+        <!-- Main headline -->
+        <h1 class="text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.08] tracking-tight text-white">
+          {copy.headline1}<br/>
+          <span class="text-[#0066FF]">{copy.headline2}</span><br/>
+          <span class="text-slate-300">{copy.headline3}</span>
+        </h1>
+
+        <!-- Sub-headline -->
+        <p class="text-slate-400 text-lg leading-relaxed max-w-xl">
+          {copy.subheadline}
+        </p>
+
+        <!-- App compatibility pills -->
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-xs text-slate-500 font-medium">{copy.apps.label}</span>
+          {copy.apps.names.map(app => (
+            <span class="bg-[#1E2D4A] border border-[#2A3D5F] text-slate-300 text-xs font-mono px-3 py-1 rounded-full">
+              {app}
+            </span>
+          ))}
+        </div>
+
+        <!-- CTA row -->
+        <div class="flex flex-wrap gap-3 pt-1">
+          <a
+            href="#contact"
+            class="inline-flex items-center gap-2 bg-[#0066FF] hover:bg-blue-500 text-white font-bold px-6 py-3 rounded-lg transition-all duration-200 shadow-xl shadow-blue-900/30 hover:shadow-blue-600/40 hover:-translate-y-0.5 text-sm"
+          >
+            <!-- Fixed SVG fallback size -->
+            <svg width="16" height="16" class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            {copy.cta.primary}
+          </a>
+          <a
+            href="#catalog"
+            class="inline-flex items-center gap-2 bg-transparent border border-slate-600 hover:border-slate-400 text-slate-300 hover:text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 text-sm"
+          >
+            <!-- Fixed SVG fallback size -->
+            <svg width="16" height="16" class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            {copy.cta.secondary}
+          </a>
+        </div>
+
+        <!-- Stat row -->
+        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-[#1E2D4A]">
+          {copy.stats.map(stat => (
+            <div class="flex flex-col gap-0.5">
+              <span class="text-xl font-extrabold text-white tracking-tight">{stat.value}</span>
+              <span class="text-xs text-slate-500 leading-tight">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- ── RIGHT: Hardware image placeholder ──────── -->
+      <div class="relative flex flex-col items-center justify-center">
+
+        <!-- GPS coordinate watermarks — Vsterlink LATAM routes -->
+        <div aria-hidden="true" class="absolute inset-0 flex flex-col justify-between py-4 pointer-events-none select-none overflow-hidden">
+          {copy.coords.map((coord, i) => (
+            <p
+              class="font-mono text-[10px] tracking-wider opacity-25 text-[#00D4AA]"
+              style={`text-align: ${i % 2 === 0 ? 'left' : 'right'}`}
+            >
+              {coord}
+            </p>
+          ))}
+        </div>
+
+        <!-- Image frame -->
+        <div class="relative w-full aspect-[4/3] rounded-2xl border-2 border-dashed border-[#1E2D4A] bg-[#0D1626] flex flex-col items-center justify-center gap-4 group hover:border-[#0066FF]/50 transition-colors overflow-hidden">
+
+          <!-- Corner accent brackets -->
+          <div aria-hidden="true" class="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-[#0066FF]/60"></div>
+          <div aria-hidden="true" class="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-[#0066FF]/60"></div>
+          <div aria-hidden="true" class="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-[#0066FF]/60"></div>
+          <div aria-hidden="true" class="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-[#0066FF]/60"></div>
+
+          <!-- Fixed Placeholder vector size to prevent giant scaling errors -->
+          <svg width="56" height="56" class="w-14 h-14 text-[#1E2D4A]" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <div class="text-center px-6">
+            <p class="text-slate-300 text-sm font-semibold">{copy.imagePlaceholder.label}</p>
+            <p class="text-slate-600 text-xs mt-1.5 leading-relaxed">{copy.imagePlaceholder.hint}</p>
+            <p class="font-mono text-[10px] text-slate-700 mt-2">{copy.imagePlaceholder.sub}</p>
+          </div>
+
+          <!-- Scanline overlay -->
+          <div
+            aria-hidden="true"
+            class="absolute inset-0 opacity-[0.025] pointer-events-none"
+            style="background: repeating-linear-gradient(0deg, #00D4AA, #00D4AA 1px, transparent 1px, transparent 4px);"
+          ></div>
+        </div>
+
+        <!-- Suggested model label -->
+        <p class="mt-3 font-mono text-[10px] text-slate-600 tracking-widest uppercase text-center">
+          Suggested: PG07 · TK202 · LF10 group shot
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>

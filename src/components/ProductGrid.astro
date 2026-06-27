@@ -1,0 +1,404 @@
+---
+/**
+ * ProductGrid.astro — Vsterlink
+ * Real product models, features, and EXW pricing from quotation list.
+ * Three category sections: Vehicle Trackers / Asset Tracking / Dash Cameras.
+ */
+
+ interface ProductFeature {
+  label:      string;
+  highlight?: boolean;
+}
+
+interface ProductCard {
+  model:       string;
+  badge?:      string;
+  name:        string;
+  tagline:     string;
+  description: string;
+  price:       string;
+  priceNote?:  string;
+  features:    ProductFeature[];
+  painPoint:   string;
+  cta:         string;
+}
+
+interface Category {
+  id:          string;
+  icon:        string;
+  accentColor: string;
+  tag:         string;
+  heading:     string;
+  sub:         string;
+  products:    ProductCard[];
+}
+
+const categories: Category[] = [
+  {
+    id:          "vehicle-trackers",
+    icon:        "tracker",
+    accentColor: "#0066FF",
+    tag:         "Vehicle GPS Trackers",
+    heading:     "Fleet-Grade Wired Trackers",
+    sub:         "Hardwired 4G LTE solutions for commercial fleets, logistics, and motorcycle security — with remote engine cut-off and ACC ignition logic.",
+    products: [
+      {
+        model:       "PG07",
+        badge:       "Best Seller",
+        name:        "PG07 4G Wired GPS Tracker",
+        tagline:     "2G / 4G LTE — Fleet Management & Vehicle Security",
+        description: "Compact hardwired tracker with BeiDou satellite navigation, 9–90V wide voltage input, and multiple positioning methods (GPS + WiFi + LBS). Ideal for cars, motorcycles, and electric vehicles.",
+        price:       "From $6.62 EXW",
+        priceNote:   "4G 2-wire · $7.12 4-wire · $8.22 with engine cut-off",
+        features: [
+          { label: "4G LTE + 2G GSM Fallback",                highlight: true  },
+          { label: "Remote Engine Cut-Off (SMS / API)",        highlight: true  },
+          { label: "ACC Ignition Detection & Logic Hooks"                       },
+          { label: "Real-Time Geofencing + Zone Breach Alert"                   },
+          { label: "GPS + BeiDou + WiFi + LBS Positioning"                     },
+          { label: "9–90V Wide Voltage — Cars, Trucks, Motos"                  },
+          { label: "Compact Waterproof Design — Discreet Install"               },
+        ],
+        painPoint:   "LATAM-ready: wide voltage handles 12V and 24V diesel fleets across all territories.",
+        cta:         "Enquire: PG07",
+      },
+      {
+        model:       "GT06",
+        name:        "GT06 4G Wired GPS Tracker",
+        tagline:     "2G / 4G LTE — Anti-Theft & Logistics Monitoring",
+        description: "Classic wired tracker with AGPS fast positioning, blind-area data upload, and remote fuel/power cut-off. Trusted platform: compatible with DAGPS and QXGPS fleet dashboards.",
+        price:       "$16.28 EXW",
+        priceNote:   "4G version — bulk pricing on request",
+        features: [
+          { label: "Remote Fuel / Power Cut-Off via SMS/App",  highlight: true  },
+          { label: "GPS + AGPS Positioning — Fast Cold Start", highlight: true  },
+          { label: "Blind-Area Data Upload (offline store)"                     },
+          { label: "SOS Alarm + Overspeed Alert"                               },
+          { label: "Built-In Memory Storage"                                   },
+          { label: "ACC Ignition Detection"                                     },
+          { label: "DAGPS · QXGPS Platform Compatible"                         },
+        ],
+        painPoint:   "Blind-area upload critical for LATAM routes through tunnels and dead zones.",
+        cta:         "Enquire: GT06",
+      },
+      {
+        model:       "J16",
+        name:        "J16 Mini 4G GPS Tracker",
+        tagline:     "4G LTE — Compact Wired Fleet & Moto Tracker",
+        description: "Ultra-compact wired tracker with real-time ACC detection, power failure tamper alert, and route history. Ships with optional accessory kit (power wire, battery, relay).",
+        price:       "From $15.68 EXW",
+        priceNote:   "Device only · $17.89 with full accessory kit",
+        features: [
+          { label: "Real-Time 4G GPS — 15 s update interval",  highlight: true  },
+          { label: "Remote Engine Cut-Off — Anti-Theft",       highlight: true  },
+          { label: "Power Failure Alert — Tamper Detection"                     },
+          { label: "ACC Detection — Ignition ON/OFF Status"                    },
+          { label: "Geo-Fence + Smart Movement Alerts"                         },
+          { label: "Route History & Mileage Tracking"                          },
+          { label: "Wired — No Charging Required"                               },
+        ],
+        painPoint:   "Ideal for motorcycle fleets — miniature form factor hidden under fairings.",
+        cta:         "Enquire: J16",
+      },
+    ],
+  },
+  {
+    id:          "asset-tracking",
+    icon:        "asset",
+    accentColor: "#00D4AA",
+    tag:         "Asset Tracking Solutions",
+    heading:     "Magnetic Cargo & Equipment Monitors",
+    sub:         "Battery-powered, magnetically mounted trackers for containers, trailers, generators, and high-value cargo — no wiring required, months of standby.",
+    products: [
+      {
+        model:       "TK202",
+        badge:       "Top Anti-Theft",
+        name:        "TK202 4G Magnetic GPS Tracker",
+        tagline:     "Long-Standby Covert Asset Protection",
+        description: "Strong full-magnet attachment for secure covert deployment on cargo, vehicles, or metal equipment. 5000–6400 mAh battery gives up to 90 days standby — no subscription required.",
+        price:       "From $23.32 EXW",
+        priceNote:   "$23.32 (4000 mAh) · $25.42 (5000 mAh)",
+        features: [
+          { label: "Up to 90 Days Standby — 5000/6400 mAh",   highlight: true  },
+          { label: "Strong Full-Magnet — Chassis-Ready Attach", highlight: true },
+          { label: "4G / 3G / 2G Global Multi-Network"                         },
+          { label: "Real-Time Tracking — No Subscription Fee"                  },
+          { label: "AGPS Fast Positioning + Blind Area Upload"                 },
+          { label: "Vibration / Tamper Shock Alert"                            },
+          { label: "Compact Waterproof Design"                                 },
+        ],
+        painPoint:   "Ideal for LATAM cargo theft prevention on containers and pallets at border crossings.",
+        cta:         "Enquire: TK202",
+      },
+      {
+        model:       "Q8–Q12",
+        name:        "Q-Series 4G Mini Asset Trackers",
+        tagline:     "1,200 mAh – 20,000 mAh · Scalable Standby",
+        description: "A scalable family from Q8 (compact, 1200 mAh) through Q12 (20,000 mAh / months of standby). Strong magnetic chassis, electronic geo-fence, multiple intelligent alarm types.",
+        price:       "From $13.88 EXW",
+        priceNote:   "Q8: $13.88 · Q9: $15.99 · Q10: $18.12 · Q16: $21.78 · Q12: $26.16",
+        features: [
+          { label: "Up to 20,000 mAh — Q12 Extreme Standby",  highlight: true  },
+          { label: "Strong Magnetic Chassis — Tool-Free Mount", highlight: true },
+          { label: "Electronic Geo-Fence — App-Set Perimeter"                  },
+          { label: "Multiple Intelligent Alarms — SMS + App"                   },
+          { label: "Multiple Precision Positioning Modes"                       },
+          { label: "GPS + WiFi + LBS + BeiDou Constellations"                 },
+          { label: "Global Real-Time Route History"                            },
+        ],
+        painPoint:   "Choose standby tier to match route length — Q12 covers multi-week sea freight legs.",
+        cta:         "Enquire: Q-Series",
+      },
+      {
+        model:       "TK905",
+        name:        "TK905 5000 mAh Magnetic GPS",
+        tagline:     "Waterproof IP67 · Long-Standby Vehicle & Cargo",
+        description: "Powerful 10,000 mAh battery with dual-positioning (GPS + LBS), multiple sleep modes, fall-off alarm, and GSM street-name SMS tracking. IP67 submersion-rated.",
+        price:       "$33.15 EXW",
+        priceNote:   "4G version — includes free lifetime web + app platform",
+        features: [
+          { label: "10,000 mAh — Weeks Without Recharge",      highlight: true  },
+          { label: "IP67 Waterproof — Full Submersion Rated",  highlight: true  },
+          { label: "Fall-Off Alarm — Anti-Removal Detection"                   },
+          { label: "Built-In Motion Sensor — Anti-Theft SMS"                   },
+          { label: "GSM SMS Tracking with Street Name"                         },
+          { label: "Free Lifetime Web + Mobile App Platform"                   },
+          { label: "Geo-Fence · Overspeed · Low Battery Alerts"               },
+        ],
+        painPoint:   "Survives monsoon conditions and river crossings common to LATAM freight routes.",
+        cta:         "Enquire: TK905",
+      },
+    ],
+  },
+  {
+    id:          "dash-cameras",
+    icon:        "dashcam",
+    accentColor: "#FF4D1C",
+    tag:         "Dash Cameras & Video Telematics",
+    heading:     "4K Fleet Safety & Evidence Systems",
+    sub:         "Sony-sensor HD cameras with WiFi, GPS, G-sensor event lock, and 24H parking monitor — for liability protection and driver behavior management.",
+    products: [
+      {
+        model:       "LF10",
+        badge:       "Fleet Pick",
+        name:        "LF10 4K WiFi Dash Camera",
+        tagline:     "Sony GC4653 · H.265 · Super Capacitor — Fleet Safety",
+        description: "Compact 4K single-lens fleet camera featuring the Sony GC4653 image sensor, H.265 efficient encoding, 5.8GHz WiFi for instant footage transfer, and super capacitor protection for extreme temperature environments.",
+        price:       "$23.28 EXW",
+        priceNote:   "Supports up to 256 GB TF card — bulk fleet pricing available",
+        features: [
+          { label: "4K Ultra HD — Sony GC4653 Image Sensor",   highlight: true  },
+          { label: "Super Capacitor — Extreme Temp Protection", highlight: true  },
+          { label: "5.8GHz WiFi — Instant Phone Footage Access"                 },
+          { label: "170° Wide-Angle Lens — Full Road Coverage"                 },
+          { label: "G-Sensor Collision Lock — Event Saved Auto"                },
+          { label: "24H Parking Monitor — Parked Impact Record"                },
+          { label: "H.265 Encoding — 50% Storage Saving"                       },
+        ],
+        painPoint:   "Super capacitor survives LATAM heat extremes where battery-based cams fail.",
+        cta:         "Enquire: LF10",
+      },
+      {
+        model:       "V50S",
+        name:        "V50S 4K Dual-Lens GPS Dash Cam",
+        tagline:     "Front 4K + Rear/Interior · STARVIS Sensor · GPS Track",
+        description: "Dual-lens system captures 4K road-facing and 1080p cabin or reverse footage simultaneously. STARVIS night vision sensor ensures clear low-light recording on overnight freight routes.",
+        price:       "From $30.48 EXW",
+        priceNote:   "$30.48 (Device + Reverse) · up to $36 (Interior Cam + Reverse + GPS)",
+        features: [
+          { label: "4K Front + 1080p Cabin/Rear Dual Lens",   highlight: true   },
+          { label: "STARVIS Night Vision — Clear in Low Light", highlight: true  },
+          { label: "Optional GPS Tracking — Route + Speed Log"                  },
+          { label: "WiFi App Control — View Footage Anywhere"                   },
+          { label: "170° Wide-Angle Front Coverage"                             },
+          { label: "24H Parking Monitor — Auto Record Impact"                  },
+          { label: "Emergency Lock — Critical Footage Secured"                  },
+        ],
+        painPoint:   "STARVIS sensor critical for LATAM overnight routes where lighting is minimal.",
+        cta:         "Enquire: V50S",
+      },
+      {
+        model:       "V71",
+        name:        "V71 4K UHD WiFi Dash Camera",
+        tagline:     "4K UHD · Built-In WiFi · HDR · 24H Parking Monitor",
+        description: "Entry-level 4K fleet camera with built-in WiFi, advanced night vision, HDR technology for balanced exposure, and 24H parking surveillance — all at a competitive wholesale price point.",
+        price:       "$21.80 EXW",
+        priceNote:   "Most competitive 4K price point — high-volume fleet rollout ready",
+        features: [
+          { label: "4K UHD Recording — Crystal-Clear Evidence",highlight: true  },
+          { label: "Built-In WiFi — Seamless Footage Transfer", highlight: true  },
+          { label: "Advanced Night Vision Video Capability"                     },
+          { label: "HDR Technology — Balanced Exposure"                         },
+          { label: "24H Parking Monitor — Auto Record"                         },
+          { label: "Loop Recording — Auto Overwrite Storage"                   },
+          { label: "Most Price-Competitive 4K Option"                           },
+        ],
+        painPoint:   "Best price-per-unit for large fleet camera rollouts across LATAM distributors.",
+        cta:         "Enquire: V71",
+      },
+    ],
+  },
+];
+
+const iconSvgPaths: Record<string, string> = {
+  tracker: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>`,
+  asset:   `<path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>`,
+  dashcam: `<path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.362a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>`,
+};
+---
+
+<section id="products" class="bg-[#0A0F1E] py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Section Header -->
+    <div class="mb-16 text-center">
+      <p class="font-mono text-xs text-[#00D4AA] tracking-widest uppercase mb-3">Vsterlink Product Catalog</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        Hardware Built for <span class="text-[#0066FF]">Fleet-Grade Operations</span>
+      </h2>
+      <p class="text-slate-400 text-sm mt-4 max-w-2xl mx-auto">
+        Factory-direct EXW pricing · OEM/ODM branding available · LATAM LTE bands included as standard.
+      </p>
+    </div>
+
+    <!-- Categories -->
+    {categories.map(cat => (
+      <div id={cat.id} class="mb-24 last:mb-0">
+
+        <!-- Category header row -->
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={`background: ${cat.accentColor}15; border: 1px solid ${cat.accentColor}30;`}
+            >
+              <!-- Fixed SVG fallback size for category icons -->
+              <svg
+                width="20"
+                height="20"
+                class="w-5 h-5 flex-shrink-0"
+                fill="none"
+                stroke={cat.accentColor}
+                stroke-width="1.75"
+                viewBox="0 0 24 24"
+                set:html={iconSvgPaths[cat.icon]}
+              />
+            </div>
+            <div>
+              <p class="font-mono text-[10px] tracking-widest uppercase" style={`color: ${cat.accentColor}`}>
+                {cat.tag}
+              </p>
+              <h3 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-tight mt-0.5">
+                {cat.heading}
+              </h3>
+            </div>
+          </div>
+          <p class="text-slate-400 text-sm max-w-sm">{cat.sub}</p>
+        </div>
+
+        <!-- Product Cards -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {cat.products.map(product => (
+            <article class="relative flex flex-col bg-[#0D1626] border border-[#1E2D4A] rounded-2xl overflow-hidden group hover:border-[#0066FF]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#0066FF]/5">
+
+              {product.badge && (
+                <div
+                  class="absolute top-4 right-4 z-10 text-white text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full"
+                  style={`background: ${cat.accentColor};`}
+                >
+                  {product.badge}
+                </div>
+              )}
+
+              <div class="p-5 pb-4 border-b border-[#1E2D4A]">
+                <div class="flex items-center gap-2 mb-3">
+                  <span
+                    class="font-mono text-xs font-bold px-2.5 py-0.5 rounded border"
+                    style={`color: ${cat.accentColor}; border-color: ${cat.accentColor}40; background: ${cat.accentColor}10;`}
+                  >
+                    {product.model}
+                  </span>
+                </div>
+                <h4 class="text-base font-bold text-white mb-1 leading-snug">{product.name}</h4>
+                <p class="text-xs font-medium mb-3" style={`color: ${cat.accentColor}`}>{product.tagline}</p>
+                <p class="text-slate-400 text-sm leading-relaxed">{product.description}</p>
+              </div>
+
+              <div class="p-5 flex-1 flex flex-col gap-4">
+                <!-- Features List -->
+                <ul class="space-y-2">
+                  {product.features.map(feat => (
+                    <li class="flex items-start gap-2">
+                      <!-- Fixed SVG checkmark size template -->
+                      <svg
+                        width="16"
+                        height="16"
+                        class="w-4 h-4 mt-0.5 flex-shrink-0"
+                        fill="none"
+                        stroke={feat.highlight ? cat.accentColor : "#374151"}
+                        stroke-width="2.5"
+                        viewBox="0 0 24 24"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                      </svg>
+                      <span class={`text-sm leading-snug ${feat.highlight ? 'text-white font-medium' : 'text-slate-400'}`}>
+                        {feat.label}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <!-- Pricing -->
+                <div class="bg-[#0A0F1E] rounded-xl border border-[#1E2D4A] px-4 py-3 mt-auto">
+                  <p class="text-white font-bold text-base">{product.price}</p>
+                  {product.priceNote && (
+                    <p class="font-mono text-[10px] text-slate-500 mt-0.5 leading-relaxed">{product.priceNote}</p>
+                  )}
+                </div>
+
+                <!-- Pain point box -->
+                <div class="flex items-start gap-2 bg-amber-950/20 border border-amber-500/20 rounded-lg px-3 py-2.5">
+                  <!-- Fixed SVG hazard size template -->
+                  <svg width="14" height="14" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                  </svg>
+                  <p class="text-xs text-amber-400/80 leading-relaxed">{product.painPoint}</p>
+                </div>
+
+                <!-- CTA Button -->
+                <a
+                  href="#contact"
+                  class="flex items-center justify-center gap-2 border border-[#1E2D4A] hover:border-[#0066FF]/60 hover:bg-[#0066FF]/5 text-slate-300 hover:text-white text-sm font-semibold py-2.5 rounded-xl transition-all duration-200 group"
+                >
+                  {product.cta}
+                  <!-- Fixed SVG chevron size template -->
+                  <svg width="14" height="14" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+
+            </article>
+          ))}
+        </div>
+      </div>
+    ))}
+
+    <!-- OEM/ODM strip -->
+    <div id="oem" class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0D1626] border border-[#1E2D4A] rounded-2xl px-6 py-5">
+      <div>
+        <p class="text-white font-bold">Need custom firmware, branding, or platform integration?</p>
+        <p class="text-slate-400 text-sm mt-1">
+          Vsterlink OEM/ODM: logo printing, custom packaging, QXGPS/DAGPS platform setup — available from low MOQ.
+        </p>
+      </div>
+      <a
+        href="#contact"
+        class="flex-shrink-0 inline-flex items-center gap-2 bg-[#0066FF] hover:bg-blue-500 text-white font-bold px-5 py-2.5 rounded-lg text-sm transition-all hover:-translate-y-px"
+      >
+        Discuss OEM Requirements
+      </a>
+    </div>
+
+  </div>
+</section>

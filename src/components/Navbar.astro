@@ -1,0 +1,177 @@
+---
+/**
+ * Navbar.astro — Vsterlink Intelligent Technology Co., Ltd
+ * Real contact details, brand, and compliance from company catalog.
+ * All copy isolated in `copy` object for i18n.
+ */
+
+ const copy = {
+  topBar: {
+    factory:        "Shenzhen Factory Direct — CE · FCC · RoHS Certified",
+    lte:            "Global LTE Compatibility — LATAM · Africa · Europe · North America",
+    email:          "sales@vsterlink.com",
+    whatsapp:       "+85259238841",
+    whatsappLabel:  "WhatsApp",
+  },
+  nav: {
+    brand:    "Vsterlink",
+    brandSub: "GPS",
+    tagline:  "Track World Every Remote Area",
+    links: [
+      { label: "Vehicle Trackers", href: "#vehicle-trackers" },
+      { label: "Asset Tracking",   href: "#asset-tracking"  },
+      { label: "Dash Cameras",     href: "#dash-cameras"    },
+      { label: "Tech Specs",       href: "#tech-specs"      },
+      { label: "OEM / ODM",        href: "#oem"             },
+    ],
+    cta: "Get Wholesale Quote",
+  },
+};
+---
+
+<!-- ════════════════════════════════════════════════
+     TOP COMPLIANCE BAR
+════════════════════════════════════════════════ -->
+<div class="bg-[#0A0F1E] border-b border-[#1E2D4A] text-xs text-slate-400">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-between gap-4">
+
+    <!-- Left: factory + LTE credentials -->
+    <div class="hidden md:flex items-center gap-5">
+      <span class="flex items-center gap-1.5">
+        <!-- Protection: Added explicit width/height inline fallback -->
+        <svg width="14" height="14" class="w-3.5 h-3.5 text-[#00D4AA] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 21V7l7-4v4l7-4v18H3zM9 21v-6h6v6"/>
+        </svg>
+        {copy.topBar.factory}
+      </span>
+      <span class="w-px h-3 bg-[#1E2D4A]"></span>
+      <span class="flex items-center gap-1.5">
+        <!-- Protection: Added explicit width/height inline fallback -->
+        <svg width="14" height="14" class="w-3.5 h-3.5 text-[#0066FF] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.142 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
+        </svg>
+        {copy.topBar.lte}
+      </span>
+    </div>
+
+    <!-- Right: email + WhatsApp -->
+    <div class="flex items-center gap-4 ml-auto md:ml-0">
+      <a
+        href={`mailto:${copy.topBar.email}`}
+        class="hover:text-white transition-colors hidden sm:block"
+      >
+        {copy.topBar.email}
+      </a>
+      <span class="w-px h-3 bg-[#1E2D4A] hidden sm:block"></span>
+      <a
+        href={`https://wa.me/${copy.topBar.whatsapp.replace(/\D/g,'')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-1.5 text-[#00D4AA] hover:text-white transition-colors font-medium"
+      >
+        <!-- Protection: Added explicit width/height inline fallback to WhatsApp icon -->
+        <svg width="14" height="14" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.855L.057 23.215a.75.75 0 00.921.921l5.36-1.475A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.714 9.714 0 01-4.95-1.355l-.354-.21-3.675 1.011 1.011-3.675-.21-.354A9.714 9.714 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
+        </svg>
+        {copy.topBar.whatsappLabel}: {copy.topBar.whatsapp}
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     MAIN STICKY NAVBAR
+════════════════════════════════════════════════ -->
+<header
+  id="main-nav"
+  class="sticky top-0 z-50 bg-[#0A0F1E]/95 backdrop-blur-md border-b border-[#1E2D4A]"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-6">
+
+    <!-- Brand Logo Group -->
+    <a href="/" class="flex items-center gap-2.5 group flex-shrink-0">
+      <div class="relative w-8 h-8">
+        <div class="absolute inset-0 bg-[#1D3A8A] rounded-full opacity-60 group-hover:opacity-80 transition-opacity animate-ping" style="animation-duration:3s;"></div>
+        <div class="relative w-8 h-8 bg-[#1D3A8A] rounded-full flex items-center justify-center border border-[#0066FF]/40">
+          <!-- Protection: Fixed sizes for inner locator logo -->
+          <svg width="16" height="16" class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="flex flex-col leading-none">
+        <span class="text-white font-extrabold text-lg tracking-tight">
+          {copy.nav.brand}<span class="text-[#0066FF]">{copy.nav.brandSub}</span>
+        </span>
+        <span class="font-mono text-[9px] text-slate-500 tracking-widest uppercase leading-none mt-0.5">
+          {copy.nav.tagline}
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop nav links -->
+    <nav class="hidden lg:flex items-center gap-7">
+      {copy.nav.links.map(link => (
+        <a
+          href={link.href}
+          class="text-sm text-slate-300 hover:text-white transition-colors font-medium relative group whitespace-nowrap"
+        >
+          {link.label}
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#0066FF] group-hover:w-full transition-all duration-200 rounded-full"></span>
+        </a>
+      ))}
+    </nav>
+
+    <!-- CTA Button + Mobile Hamburger -->
+    <div class="flex items-center gap-3 flex-shrink-0">
+      <a
+        href="#contact"
+        class="hidden sm:inline-flex items-center gap-2 bg-[#0066FF] hover:bg-blue-500 text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-all duration-200 shadow-lg shadow-blue-900/40 hover:shadow-blue-600/40 hover:-translate-y-px whitespace-nowrap"
+      >
+        <!-- Protection: Fixed sizes for paper-plane doc icon -->
+        <svg width="16" height="16" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+        {copy.nav.cta}
+      </a>
+      <button
+        id="menu-toggle"
+        class="lg:hidden text-slate-300 hover:text-white p-1.5 rounded-md hover:bg-[#1E2D4A] transition-colors"
+        aria-label="Toggle navigation menu"
+      >
+        <!-- Protection: Fixed sizes for burger toggle icon -->
+        <svg width="24" height="24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu dropdown -->
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-[#1E2D4A] bg-[#0A0F1E] px-4 py-4 space-y-1">
+    {copy.nav.links.map(link => (
+      <a
+        href={link.href}
+        class="block text-sm text-slate-300 hover:text-white hover:bg-[#1E2D4A] rounded-lg px-3 py-2.5 font-medium transition-colors"
+      >
+        {link.label}
+      </a>
+    ))}
+    <div class="pt-3 border-t border-[#1E2D4A] mt-3">
+      <a
+        href="#contact"
+        class="flex items-center justify-center gap-2 bg-[#0066FF] text-white text-sm font-bold px-5 py-3 rounded-lg"
+      >
+        {copy.nav.cta}
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu   = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+</script>

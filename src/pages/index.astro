@@ -1,4 +1,8 @@
 ---
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import TrustBanner from '../components/TrustBanner.astro';
+import ProductGrid from '../components/ProductGrid.astro';
 import { ui } from '../dict/ui';
 const currentLocale = 'en';
 const t = (key: keyof typeof ui['en']) => ui[currentLocale][key];
@@ -8,9 +12,19 @@ const t = (key: keyof typeof ui['en']) => ui[currentLocale][key];
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vsterlink | {t('hero.title')}</title>
+    <title>Vsterlink B2B GPS Hardware</title>
+    
+    <!-- Add this line to inject Tailwind's global styles -->
+    <link rel="stylesheet" href="/src/styles/global.css" /> 
   </head>
   <body class="bg-slate-950 text-slate-100 font-sans antialiased">
+
+    <Navbar />
+    <Hero />
+    <TrustBanner />
+    <ProductGrid />
+  
+  </body>
     
     <!-- Top Global Contact Ribbon -->
     <div class="bg-slate-900 border-b border-slate-800 text-xs py-2 px-4">
