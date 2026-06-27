@@ -1,0 +1,101 @@
+---
+import { ui } from '../../dict/ui';
+
+export function getStaticPaths() {
+  return [
+    { params: { locale: 'es' } },
+    { params: { locale: 'pt' } },
+  ];
+}
+
+const { locale } = Astro.params;
+const currentLocale = locale as keyof typeof ui;
+const t = (key: keyof typeof ui['en']) => ui[currentLocale][key] || ui['en'][key];
+---
+
+<html lang={currentLocale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vsterlink | {t('hero.title')}</title>
+  </head>
+  <body class="bg-slate-950 text-slate-100 font-sans antialiased">
+    
+    <!-- Top Global Contact Ribbon -->
+    <div class="bg-slate-900 border-b border-slate-800 text-xs py-2 px-4">
+      <div class="max-w-7xl mx-auto flex justify-between items-center text-slate-400">
+        <div>📍 Shenzhen, China • Global LTE Compatibility</div>
+        <div class="flex space-x-4">
+          <span>📧 info@vsterlink.com</span>
+          <span>📱 WhatsApp: +85259238841</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Header Block -->
+    <header class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur border-b border-slate-800 px-6 py-4">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="text-2xl font-black tracking-widest text-blue-500">VSTERLINK</div>
+        
+        <!-- Language Selection Toggle Dropdown -->
+        <div class="flex items-center space-x-3">
+          <select class="bg-slate-900 border border-slate-700 text-xs px-3 py-2 rounded-xl text-slate-200 focus:outline-none focus:border-blue-500 transition" 
+                  onchange="window.location.href = this.value">
+            <option value="/" selected={currentLocale === 'en'}>English</option>
+            <option value="/es" selected={currentLocale === 'es'}>Español</option>
+            <option value="/pt" selected={currentLocale === 'pt'}>Português</option>
+          </select>
+          <a href="https://wa.me/85259238841" class="text-sm font-semibold bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-xl border border-slate-700 transition">
+            {t('nav.contact')}
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Content Module -->
+    <section class="relative text-center py-24 px-6 max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
+        {t('hero.title')}
+      </h1>
+      <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
+        {t('hero.subtitle')}
+      </p>
+      <a href={`https://wa.me/85259238841?text=Hola Vsterlink, vengo de su sitio web y solicito lista de precios mayoristas para la región de idioma: ${currentLocale}`} 
+         class="inline-flex bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-8 py-4 rounded-2xl transition shadow-xl shadow-blue-900/40 transform hover:-translate-y-0.5">
+        {t('cta.whatsapp')}
+      </a>
+    </section>
+
+    <!-- B2B 3-Category Product Core Grid -->
+    <section class="max-w-7xl mx-auto px-6 py-12 border-t border-slate-900">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Category Card 1 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-slate-700 transition">
+          <div class="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-2xl flex items-center justify-center text-2xl mb-6">🚗</div>
+          <h3 class="text-xl font-bold mb-3">{t('cat.vehicle')}</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">Wired 4G trackers with engine cut-off, real-time geofences, and ACC ignition detection logic hooks.</p>
+          <span class="text-blue-500 text-xs font-semibold uppercase tracking-wider">OEM / ODM Supported →</span>
+        </div>
+
+        <!-- Category Card 2 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-slate-700 transition">
+          <div class="w-12 h-12 bg-emerald-500/10 text-emerald-500 rounded-2xl flex items-center justify-center text-2xl mb-6">📦</div>
+          <h3 class="text-xl font-bold mb-3">{t('cat.asset')}</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">Ultra-long standby battery and heavy magnetic chassis for container cargo security tracking applications.</p>
+          <span class="text-emerald-500 text-xs font-semibold uppercase tracking-wider">Long Standby Series →</span>
+        </div>
+
+        <!-- Category Card 3 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-slate-700 transition">
+          <div class="w-12 h-12 bg-purple-500/10 text-purple-500 rounded-2xl flex items-center justify-center text-2xl mb-6">📹</div>
+          <h3 class="text-xl font-bold mb-3">{t('cat.video')}</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">4K Ultra HD video recorders with Sony high-definition behavior sensors for total fleet driver visibility fields.</p>
+          <span class="text-purple-500 text-xs font-semibold uppercase tracking-wider">Video Telematics Line →</span>
+        </div>
+
+      </div>
+    </section>
+
+  </body>
+</html>
